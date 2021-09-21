@@ -4,15 +4,40 @@
 import random
 
 def get_bill(name, data):
-	INDEX_NAME = 0
-	INDEX_QUANTITY = 1
-	INDEX_PRICE = 2
+	sous_total = 0
+	for i in data:
+		sous_total += i[1]*i[2]
 
-	return ""
+	taxes = sous_total * 0.15
+	total = sous_total + taxes
+
+	facture = [
+		("SOUS TOTAL", sous_total),
+		("TAXES", taxes),
+		("TOTAL", total)
+	]
+
+	print(name)
+	fac = ""
+	for k in facture:
+		if k == facture[0]:
+			foo = k[0] + "{:>10.2f}".format(k[1]) + " $" + "\n"
+			fac += foo
+		else:
+			foo = k[0] + "{:>15.2f}".format(k[1]) + " $" + "\n"
+			fac += foo
+	return fac
 
 
 def format_number(number, num_decimal_digits):
-	return ""
+	string = ""
+	round_number = round(number, num_decimal_digits)
+	intnumber = int(round_number)
+	for i in range(intnumber):
+		while i < 4:
+			for k in number:
+				string += k
+				return string
 
 def get_triangle(num_rows):
 	return ""
